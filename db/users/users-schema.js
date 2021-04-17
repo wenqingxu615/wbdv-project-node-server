@@ -14,7 +14,8 @@ const usersSchema = mongoose.Schema({
     followedBy: [String],
     liked: [String],
     comments: [{bookId: String, comment: String}],
-    selled: [{bookId: String, price: Number}]
+    sold: [{bookId: String, price: Number}],
+    role:  {type: String, enum: ['buyer','seller']}
 }, {collection: "users"})
 
 module.exports = usersSchema
