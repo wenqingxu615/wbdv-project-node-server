@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 const booksSchema = mongoose.Schema({
-    bookId: String,
+    _id: String,
     likedBy: [String],
     commentedBy: [{username:String, comment: String}],
     selledBy: [{username: String, price: Number}]

@@ -5,6 +5,7 @@ const findAllUsers = () =>{
 }
 
 
+
 module.exports = {
     findAllUsers,
 }
