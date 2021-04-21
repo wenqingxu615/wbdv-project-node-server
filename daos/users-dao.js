@@ -21,9 +21,9 @@ const createUser = (user) => {
     return usersModel.create(user)
 }
 
-const updateUser = (user) => usersModel.updateOne({_id:user._id},{$set:user})
+const updateUser = (user) => usersModel.updateOne({username:user.username},{$set:user})
 
-
+//
 // const addFollowing = (user, newFollowing) => usersModel.updateOne({_id:user._id}, {$set: {following:user.following.push(newFollowing)}})
 //
 // const addFollower = (user, newFollower) => usersModel.updateOne({_id:user._id}, {$set:{followedBy: user.followedBy.push(newFollower)}})
@@ -34,5 +34,4 @@ module.exports = {
     findUserByCredentials,
     createUser,
     updateUser,
-
 }

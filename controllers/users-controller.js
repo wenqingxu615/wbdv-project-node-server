@@ -14,7 +14,7 @@ module.exports = (app) => {
         const credentials = req.body;
         userDao.findUserByUsername(credentials.username)
             .then((actualUser) => {
-                if(actualUser.length > 0) {
+                if(actualUser) {
                     res.send("0")
                 } else {
                     userDao.createUser(credentials)
@@ -39,30 +39,24 @@ module.exports = (app) => {
             })
     }
 
-    // followerUsername: the user who clicked "follow“
-    // followedUsername: the user who got a new follower
-    // const followUser = (req, res) => {
-    //
-    //     userDao.findUserByUsername(followerUsername)
-    //         .then(follower => {
-    //             userDao.addFollowing(follower,followedUsername)
-    //         })
-    // }
-    //
-    // const followedByUser = (followedUsername, followerUsername) => {
-    //     userDao.findUserByUsername(followedUsername)
-    //         .then(followed => {
-    //             userDao.addFollower(followed,followerUsername)
-    //         })
+    // const clickFollow = (req,res) => {
+    //     const follower = req.params.userA;
+    //     const followed = req.params.userB;
+    //     userDao.addFollowing(follower,followed)
+    //         .then((response) => res.send(response))
+    //     userDao.addFollower(followed,follower)
+    //         .then((response) => res.send(response))
     // }
 
     const updateUser = (req,res) =>{
-        userDao.updateUser(res.body)
-            .then(updated => res.send(updated))
+        userDao.updateUser(req.body)
+            .then(updated => {
+                res.send(updated)
+            })
     }
 
     const findUserByUsername = (req,res) =>{
-        userDao.findUserByUsername(res.params.username)
+        userDao.findUserByUsername(req.params.name)
             .then(user => res.send(user))
     }
 
@@ -76,7 +70,7 @@ module.exports = (app) => {
     app.post("/api/users/login", login);
     app.get("/api/users", findAllUsers);
     app.put("/api/users/profile",updateUser);
-    app.post("/api/user/:name",findUserByUsername);
+    app.get("/api/users/:name",findUserByUsername);
     // app.put("/api/users/:name",followUser)
-    // app.put("api/users/:")
+
 }
