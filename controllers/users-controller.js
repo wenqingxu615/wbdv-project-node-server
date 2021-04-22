@@ -65,6 +65,12 @@ module.exports = (app) => {
         res.send(currentUser)
     }
 
+    const logout = (req,res) =>{
+            req.session.destroy()
+            res.send(200)
+        }
+
+
     app.post("/api/users/profile", profile);
     app.post("/api/users/register", register);
     app.post("/api/users/login", login);
@@ -72,5 +78,6 @@ module.exports = (app) => {
     app.put("/api/users/profile",updateUser);
     app.get("/api/users/:name",findUserByUsername);
     // app.put("/api/users/:name",followUser)
+    app.post('/api/users/logout', logout);
 
 }
