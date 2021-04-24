@@ -28,10 +28,11 @@ const updateUser = (user) => usersModel.updateOne({username:user.username},{$set
 //
 // const addFollower = (user, newFollower) => usersModel.updateOne({_id:user._id}, {$set:{followedBy: user.followedBy.push(newFollower)}})
 
+
 module.exports = {
     findAllUsers,
     findUserByUsername,
     findUserByCredentials,
     createUser,
-    updateUser,
+    updateUser
 }
