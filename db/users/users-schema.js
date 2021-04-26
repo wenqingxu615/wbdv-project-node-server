@@ -1,4 +1,5 @@
 const mongoose = require("mongoose")
+const booksSchema = require("../books/books-schema")
 const usersSchema = mongoose.Schema({
     username: String,
     password: String,
@@ -12,9 +13,9 @@ const usersSchema = mongoose.Schema({
     aboutMe: String,
     following: [String],
     followedBy: [String],
-    liked: [String],
-    comments: [{bookId: String, comment: String}],
-    // sold: [{bookId: String, price: String}],
+    liked: [booksSchema],
+    comments: [{book:booksSchema, comment: String}],
+    sold: Number,
     role:  {type: String, enum: ['buyer','seller']}
 }, {collection: "users"})
 
