@@ -32,5 +32,6 @@ app.use(function (req, res, next) {
 
 require('./controllers/users-controller')(app)
 require('./controllers/books-controller')(app)
+require('./controllers/offers-controller')(app)
 
 app.listen(4000)
