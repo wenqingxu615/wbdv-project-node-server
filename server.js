@@ -5,6 +5,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 require('dotenv').config('./env')
 const uri = process.env.MONGODB_URI
+const header = process.env.REACT_HEADER
 
 const session = require('express-session')
 app.use(session({
@@ -21,7 +22,7 @@ mongoose.connect(
 
 // Configures CORS
 app.use(function (req, res, next) {
-    res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+    res.header('Access-Control-Allow-Origin', header);
     res.header('Access-Control-Allow-Headers',
         'Content-Type, X-Requested-With, Origin');
     res.header('Access-Control-Allow-Methods',
