@@ -3,6 +3,8 @@ const app = express()
 const bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
+require('dotenv').config('./env')
+const uri = process.env.MONGODB_URI
 
 const session = require('express-session')
 app.use(session({
@@ -14,7 +16,7 @@ app.use(session({
 
 const mongoose = require('mongoose');
 mongoose.connect(
-    'mongodb://localhost:27017/wbdv', // change it to your local mongodb url or heroku url
+    uri, // change it to your local mongodb url or heroku url
     {useNewUrlParser: true, useUnifiedTopology: true});
 
 // Configures CORS
@@ -34,4 +36,4 @@ require('./controllers/users-controller')(app)
 require('./controllers/books-controller')(app)
 require('./controllers/offers-controller')(app)
 
-app.listen(4000)
+app.listen(process.env.PORT || 4000)
