@@ -70,7 +70,7 @@ module.exports = (app) => {
     }
 
     const logout = (req,res) =>{
-            req.session.destroy()
+            delete req.session.profile
             res.send(200)
         }
 
