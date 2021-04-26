@@ -12,8 +12,8 @@ const findAllOffers = () =>{
     return offerDao.findAllOffers()
 }
 
-const deleteOffer = (username) =>{
-    return offerDao.deleteOffer(username)
+const deleteOffer = (offer) =>{
+    return offerDao.deleteOffer(offer)
 }
 
 const findOfferByUsername = (username) =>{

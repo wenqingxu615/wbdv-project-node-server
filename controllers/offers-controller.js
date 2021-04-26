@@ -10,7 +10,7 @@ module.exports = (app) => {
     }
 
     const findOfferByID = (req, res) => {
-        offersService.findOfferByID(req.params.bookId)
+        offersService.findOfferByID(req.params['bookId'])
             .then(offer => res.send(offer))
     }
 
@@ -32,14 +32,14 @@ module.exports = (app) => {
     }
 
     const findOfferByUsername = (req, res) => {
-        offersService.findOfferByUsername(req.params.soldBy)
+        offersService.findOfferByUsername(req.params['username'])
             .then(offer => res.send(offer))
     }
 
 
     app.post("/api/offers/create", createOffer);
-    app.get("/api/offers/:bookId", findOfferByID);
-    app.delete("/api/offers/delete", deleteOffer);
-    app.get("/api/offers/:soldBy", findOfferByUsername);
+    app.get("/api/offers/book/:bookId", findOfferByID);
+    app.delete("/api/offers/delete/:id", deleteOffer);
+    app.get("/api/offers/user/:username", findOfferByUsername);
     app.get("/api/offers",findAllOffers)
 }

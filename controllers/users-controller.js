@@ -33,6 +33,7 @@ module.exports = (app) => {
             .then((actualUser) => {
                 if(actualUser) {
                     req.session['profile'] = actualUser
+                    console.log(actualUser)
                     res.send(actualUser)
                 } else {
                     res.send("0")

@@ -4,7 +4,7 @@ const offersModel = require("../db/offers/offers-model")
 //     return offersModel.update({_id : bookId},{$set: book}, {upsert: true, setDefaultsOnInsert: true})
 // }
 
-const findOfferByID = (bookId) => offersModel.find({_id:bookId})
+const findOfferByID = (bookId) => offersModel.find({bookId:bookId})
 
 const findOfferByUsername = (username) =>  offersModel.find({soldBy: username})
 
@@ -12,7 +12,7 @@ const createOffer = (offer) => offersModel.create(offer)
 
 const findAllOffers = () => offersModel.find()
 
-const deleteOffer = (username) => offersModel.deleteOne({soldBy: username})
+const deleteOffer = (offer) => offersModel.deleteOne({_id: offer._id})
 
 
 module.exports = {
