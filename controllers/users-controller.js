@@ -63,6 +63,10 @@ module.exports = (app) => {
 
     const profile = (req, res) => {
         const currentUser = req.session['profile']
+        if (currentUser === undefined) {
+            console.log("no logged in")
+            res.send("0")
+        }
         res.send(currentUser)
     }
 

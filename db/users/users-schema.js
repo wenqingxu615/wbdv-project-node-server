@@ -14,7 +14,7 @@ const usersSchema = mongoose.Schema({
     followedBy: [String],
     liked: [String],
     comments: [{bookId: String, comment: String}],
-    sold: [{bookId: String, price: Number}],
+    sold: [{bookId: String, price: String}],
     role:  {type: String, enum: ['buyer','seller']}
 }, {collection: "users"})
 
