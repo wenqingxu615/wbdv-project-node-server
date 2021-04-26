@@ -17,15 +17,10 @@ module.exports = (app) => {
 
     const createOffer = (req, res) => {
         const offer = req.body;
-        offersService.findOfferByUsername(offer.soldBy)
-            .then((actualOffer) => {
-                if (actualOffer) {
-                    res.send("0")
-                } else {
-                    offersService.createOffer(offer)
+        offersService.createOffer(offer)
                         .then((newoffer) => {
                             res.send(newoffer)
-                        })}})
+                        })
     }
 
 
@@ -46,4 +41,5 @@ module.exports = (app) => {
     app.get("/api/offers/:bookId", findOfferByID);
     app.delete("/api/offers/delete", deleteOffer);
     app.get("/api/offers/:soldBy", findOfferByUsername);
+    app.get("/api/offers",findAllOffers)
 }
